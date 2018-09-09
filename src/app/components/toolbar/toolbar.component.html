@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button
+         routerLink="/"
+         mat-icon-button>
+            <span>MovieDB</span>
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-icon-button>
+            <mat-icon (click)="openSidenav()" class="example-icon">menu</mat-icon>
+        </button>
+        <button 
+        routerLink="home"
+        mat-icon-button>
+            <mat-icon class="material-icons">local_movies</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
