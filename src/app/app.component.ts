@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       ).subscribe(noop, noop, noop)
   }
 
-  private updateStateRequestToken(token: any): void {
+  private updateStateRequestToken(token: RequestTokenInterface): void {
     const payload: RequestTokenInterface = token;
     this.store.dispatch(new RequestToken(payload));
   }

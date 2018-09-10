@@ -1,6 +1,6 @@
 import { RequestToken } from './../actions/auth.actions';
 import { RequestTokenInterface } from "./../../models/request-token.interface";
-import { State, Action, StateContext } from "@ngxs/store";
+import { State, Action, StateContext, Selector } from "@ngxs/store";
 
 export interface AuthStateModel {
   auth: RequestTokenInterface;
@@ -20,11 +20,20 @@ export interface AuthStateModel {
 })
 export class AuthState {
 
+    @Selector()
+    public static loading(state: AuthStateModel) {
+        return state.loading;
+    }
+
+    @Selector()
+    public static auth(state: AuthStateModel) {
+        return state.auth;
+    }
+
     @Action(RequestToken)
     requestToken({ getState, setState }: StateContext<AuthStateModel>, action: any) {
         const state = getState();
         let token: RequestTokenInterface = action.payload;
-        debugger
         setState({
             ...state,
             auth: token,
