@@ -1,5 +1,3 @@
-import { WrapperHomeComponent } from './home/wrapper-home/wrapper-home.component';
-import { FooterComponent } from './components/footer/footer.component';
 // Angular standard
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,9 +11,14 @@ import { ROUTES } from './router.config';
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { CardMovieComponent } from './home/card-movie/card-movie.component';
+import { WrapperHomeComponent } from './home/wrapper-home/wrapper-home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // Modules
 import { MaterialModule } from './material/material.module';
+import { FindComponent } from './home/find/find.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { MaterialModule } from './material/material.module';
     SidenavComponent,
     ToolbarComponent,
     FooterComponent,
-    WrapperHomeComponent
+    WrapperHomeComponent,
+    FindComponent,
+    CardMovieComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
