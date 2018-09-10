@@ -20,6 +20,12 @@ import { MaterialModule } from './material/material.module';
 import { FindComponent } from './home/find/find.component';
 import { HttpClientModule } from '@angular/common/http';
 
+// Ngxs
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { AuthState } from './store/state/auth.state';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +41,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxsModule.forRoot([
+      AuthState
+    ]),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

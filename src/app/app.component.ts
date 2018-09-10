@@ -1,8 +1,11 @@
+import { RequestTokenInterface } from './models/request-token.interface';
+import { RequestToken } from './store/actions/auth.actions';
 import { OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 import { tap, finalize, retry, debounceTime } from 'rxjs/operators';
 import { noop } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +13,7 @@ import { noop } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(protected authService: AuthService) { }
+  constructor(protected authService: AuthService, protected store: Store) { }
 
   public ngOnInit(): void {
     this.authService.authenticationToken()
@@ -22,7 +25,8 @@ export class AppComponent implements OnInit {
   }
 
   private updateStateRequestToken(token: any): void {
-    debugger
+    const payload: RequestTokenInterface = token;
+    this.store.dispatch(new RequestToken(payload));
   }
 
 }
